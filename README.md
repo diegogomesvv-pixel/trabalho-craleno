@@ -1,1 +1,267 @@
-# trabalho-craleno
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MacBook Pro — Poder em Movimento</title>
+
+<!-- Google Fonts: Inter como substituto próximo da SF Pro -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- Tailwind CSS via CDN (apenas o compilador utilitário — sem JS de interatividade) -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ink:    '#1D1D1F',
+          fog:    '#F5F5F7',
+          steel:  '#86868B',
+          signal: '#0071E3',
+        },
+        fontFamily: {
+          sans: ['"Inter"','-apple-system','BlinkMacSystemFont','sans-serif'],
+        }
+      }
+    }
+  }
+</script>
+
+<style>
+  /* Glassmorphism no menu superior */
+  .glass-nav {
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  }
+
+  /* Seletores de atributo — estados de campos e botões */
+  input[type="email"] {
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  input[type="email"]:focus {
+    outline: none;
+    border-color: #0071E3;
+    box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.15);
+  }
+  button[type="submit"] {
+    background: #1D1D1F;
+    transition: background-color 0.2s ease, transform 0.15s ease;
+  }
+  button[type="submit"]:hover {
+    background: #000;
+    transform: translateY(-1px);
+  }
+
+  /* Foco de teclado visível (acessibilidade) */
+  a:focus-visible,
+  button:focus-visible {
+    outline: 2px solid #0071E3;
+    outline-offset: 3px;
+  }
+
+  /* CTA principal com destaque em hover, usando HSLA */
+  .cta-primary {
+    background: hsl(212, 100%, 45%);
+    transition: background-color 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+  }
+  .cta-primary:hover {
+    background: hsl(212, 100%, 40%);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px hsla(212, 100%, 45%, 0.35);
+  }
+
+  /* Cartões de especificação com leve elevação em hover */
+  .spec-card {
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .spec-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.08);
+  }
+</style>
+</head>
+
+<body class="font-sans bg-white text-ink antialiased">
+
+  <!-- ============ HEADER / NAV (glassmorphism) ============ -->
+  <header class="glass-nav sticky top-0 z-50">
+    <nav class="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
+      <a href="#inicio" class="text-lg font-semibold tracking-tight">MacBook Pro</a>
+
+      <ul class="hidden md:flex items-center gap-8 text-sm text-ink/80">
+        <li><a href="#especificacoes" class="hover:text-signal transition-colors">Especificações</a></li>
+        <li><a href="#galeria" class="hover:text-signal transition-colors">Galeria</a></li>
+        <li><a href="#comprar" class="hover:text-signal transition-colors">Comprar</a></li>
+      </ul>
+
+      <a href="#comprar"
+         class="text-sm font-medium bg-signal text-white px-4 py-2 rounded-full hover:bg-signal/90 transition-colors">
+        Comprar
+      </a>
+    </nav>
+  </header>
+
+  <main id="inicio">
+
+    <!-- ============ HERO ============ -->
+    <section class="bg-black">
+      <div class="max-w-6xl mx-auto px-6 py-20 md:py-28 text-center">
+        <p class="text-signal text-sm font-medium tracking-wide mb-3">MacBook Pro · Chip M3</p>
+        <h1 class="text-4xl md:text-6xl font-semibold text-white tracking-tight mb-4">
+          Poder em Movimento.
+        </h1>
+        <p class="text-white/70 text-lg mb-10">Desempenho profissional em um design que cabe na sua mochila.</p>
+
+        <div class="rounded-3xl overflow-hidden max-w-3xl mx-auto shadow-2xl">
+          <img
+            src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=1600&q=80"
+            alt="MacBook Pro aberto sobre uma mesa, mostrando a tela e o teclado"
+            class="w-full h-auto object-cover">
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ESPECIFICAÇÕES TÉCNICAS ============ -->
+    <section id="especificacoes" class="bg-fog">
+      <div class="max-w-6xl mx-auto px-6 py-24">
+        <div class="text-center max-w-2xl mx-auto mb-16">
+          <h2 class="text-3xl md:text-5xl font-semibold tracking-tight mb-4">Feito para quem exige tudo.</h2>
+          <p class="text-steel text-lg">Cada componente foi repensado para entregar desempenho sem perder o silêncio.</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6">
+          <article class="spec-card bg-white rounded-3xl p-8">
+            <div class="w-12 h-12 rounded-2xl bg-signal/10 flex items-center justify-center mb-6">
+              <span class="text-signal font-semibold">M3</span>
+            </div>
+            <h3 class="text-xl font-semibold mb-3">Chip M3</h3>
+            <p class="text-steel">CPU de até 12 núcleos e GPU de até 18 núcleos. Até 2x mais rápido que a geração anterior, com metade do consumo de energia.</p>
+          </article>
+
+          <article class="spec-card bg-white rounded-3xl p-8">
+            <div class="w-12 h-12 rounded-2xl bg-signal/10 flex items-center justify-center mb-6">
+              <span class="text-signal font-semibold">XDR</span>
+            </div>
+            <h3 class="text-xl font-semibold mb-3">Liquid Retina XDR</h3>
+            <p class="text-steel">Brilho de pico de 1.600 nits e contraste extremo. Cores fiéis para edição profissional de foto e vídeo.</p>
+          </article>
+
+          <article class="spec-card bg-white rounded-3xl p-8">
+            <div class="w-12 h-12 rounded-2xl bg-signal/10 flex items-center justify-center mb-6">
+              <span class="text-signal font-semibold">22h</span>
+            </div>
+            <h3 class="text-xl font-semibold mb-3">Bateria que dura</h3>
+            <p class="text-steel">Até 22 horas de reprodução de vídeo. Um dia inteiro de trabalho sem procurar tomada.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ GALERIA DE IMAGENS ============ -->
+    <section id="galeria" class="bg-white">
+      <div class="max-w-6xl mx-auto px-6 py-24">
+        <div class="text-center max-w-2xl mx-auto mb-12">
+          <h2 class="text-3xl md:text-5xl font-semibold tracking-tight mb-4">Design que se sente antes de se ver.</h2>
+          <p class="text-steel text-lg">Alumínio reciclado, dobradiças precisas, cada ângulo pensado.</p>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div class="col-span-2 rounded-3xl overflow-hidden">
+            <img class="w-full h-full object-cover" loading="lazy"
+                 src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=1200&q=80"
+                 alt="MacBook Pro visto de cima, teclado e trackpad">
+          </div>
+          <div class="rounded-3xl overflow-hidden">
+            <img class="w-full h-full object-cover" loading="lazy"
+                 src="https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=800&q=80"
+                 alt="Lateral do MacBook Pro mostrando as portas">
+          </div>
+          <div class="rounded-3xl overflow-hidden">
+            <img class="w-full h-full object-cover" loading="lazy"
+                 src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=800&q=80"
+                 alt="Tela do MacBook Pro exibindo cores vívidas">
+          </div>
+          <div class="col-span-2 rounded-3xl overflow-hidden">
+            <img class="w-full h-full object-cover" loading="lazy"
+                 src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?auto=format&fit=crop&w=1200&q=80"
+                 alt="MacBook Pro fechado, vista traseira do chassi">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CALL TO ACTION ============ -->
+    <section id="comprar" class="bg-ink">
+      <div class="max-w-4xl mx-auto px-6 py-24 text-center">
+        <h2 class="text-3xl md:text-5xl font-semibold tracking-tight text-white mb-4">
+          O seu próximo passo começa aqui.
+        </h2>
+        <p class="text-white/60 text-lg mb-10">A partir de R$ 18.999 ou em até 12x sem juros.</p>
+
+        <a href="#"
+           class="cta-primary inline-block text-white text-base font-medium px-10 py-4 rounded-full">
+          Comprar Agora →
+        </a>
+
+        <!-- Formulário simples de lista de espera / newsletter -->
+        <form class="mt-14 max-w-md mx-auto flex gap-3">
+          <label for="email" class="sr-only">Seu e-mail</label>
+          <input type="email" id="email" name="email" required placeholder="seuemail@exemplo.com"
+                 class="flex-1 rounded-full px-5 py-3 text-white placeholder-white/40">
+          <button type="submit" class="text-white text-sm font-medium px-6 py-3 rounded-full whitespace-nowrap">
+            Avise-me
+          </button>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ RODAPÉ ============ -->
+  <footer class="bg-fog border-t border-black/5">
+    <div class="max-w-6xl mx-auto px-6 py-12 grid md:grid-cols-4 gap-8 text-sm text-steel">
+      <div>
+        <p class="text-ink font-semibold mb-3">MacBook Pro</p>
+        <p>Design e engenharia pensados para durar anos de uso intenso.</p>
+      </div>
+
+      <div>
+        <p class="text-ink font-medium mb-3">Produto</p>
+        <ul class="space-y-2">
+          <li><a href="#especificacoes" class="hover:text-signal transition-colors">Especificações</a></li>
+          <li><a href="#galeria" class="hover:text-signal transition-colors">Galeria</a></li>
+          <li><a href="#comprar" class="hover:text-signal transition-colors">Comprar</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="text-ink font-medium mb-3">Suporte</p>
+        <ul class="space-y-2">
+          <li><a href="#" class="hover:text-signal transition-colors">Garantia</a></li>
+          <li><a href="#" class="hover:text-signal transition-colors">Assistência técnica</a></li>
+          <li><a href="#" class="hover:text-signal transition-colors">Contato</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="text-ink font-medium mb-3">Legal</p>
+        <ul class="space-y-2">
+          <li><a href="#" class="hover:text-signal transition-colors">Termos de uso</a></li>
+          <li><a href="#" class="hover:text-signal transition-colors">Privacidade</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-black/5 text-center py-4">
+      <p class="text-xs text-steel">© 2026. Página de demonstração criada para fins educacionais — não afiliada à Apple Inc.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
